@@ -1,36 +1,35 @@
-function id(thing){
-  return thing.title||(false?thing:JSON.stringify(thing));
+function id(thing) {
+    return thing.title || (false ? thing : JSON.stringify(thing));
 }
-
-facets = {
-  title : 'facets',
-  build(app) {
-    if(!app)throw new Error('No app in '+ id(this));
-    var targets=app.getTargets();
-    var targeters=[targets.length]
-    if(!targets)throw new Error('No targets in '+ id(this))
-    else app.attachFacets(targets);
-  }
-}
-
-Target=function (title){
-  this.title=title;
-  this.update=function(){
-    console.log('Updating in '+id(this))
-  }
-}
-
-app={
-  title:'app',
-  getTargets() {
-    return [
-      new Target('First'),
-      new Target('Second')
-    ]
-  },
-  attachFacets(targets) {
-    targets.forEach((t)=>t.update())      
-  }
-}
-
+var facets = {
+    title: 'facets',
+    build: function (app) {
+        if (!app)
+            throw new Error('No app in ' + id(this));
+        var targets = app.getTargets();
+        var targeters = [targets.length];
+        if (!targets)
+            throw new Error('No targets in ' + id(this));
+        else
+            app.attachFacets(targets);
+    }
+};
+var Target = function (title) {
+    this.title = title;
+    this.update = function () {
+        console.log('Updating in ' + id(this));
+    };
+};
+var app = {
+    title: 'app',
+    getTargets: function () {
+        return [
+            new Target('First'),
+            new Target('Second')
+        ];
+    },
+    attachFacets: function (targets) {
+        targets.forEach(function (t) { return t.update(); });
+    }
+};
 facets.build(app);
