@@ -2,7 +2,7 @@ function id(thing){
   return thing.title||(false?thing:JSON.stringify(thing));
 }
 
- let facets = {
+ facets = {
   title : 'facets',
   build(app) {
     if(!app)throw new Error('No app in '+ id(this));
