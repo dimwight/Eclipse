@@ -2,7 +2,7 @@ function id(thing){
   return thing.title||(false?thing:JSON.stringify(thing));
 }
 
- facets = {
+var facets = {
   title : 'facets',
   build(app) {
     if(!app)throw new Error('No app in '+ id(this));
@@ -24,7 +24,7 @@ var app={
   title:'app',
   getTargets() {
     return [
-      new Target('First'),
+      new Target('Firstly'),
       new Target('Second')
     ]
   },
